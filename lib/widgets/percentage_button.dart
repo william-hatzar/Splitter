@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class PercentageButton extends StatefulWidget {
   final String text;
-  const PercentageButton({Key? key, required this.text}) : super(key: key);
+  final Function onTap; // Add this line
+  const PercentageButton({Key? key, required this.text, required this.onTap}) : super(key: key);
 
   @override
   State<PercentageButton> createState() => _PercentageButtonState();
@@ -20,14 +21,16 @@ class _PercentageButtonState extends State<PercentageButton> {
     setState(() {
       currentIndex = (currentIndex + 1) % colour.length;
     });
+
+    // Call the onTap callback provided by the parent widget
+    widget.onTap();
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        cycleItems(); // Corrected the invocation
-        print(widget.text);
+        cycleItems();
       },
       child: Container(
         height: 50,

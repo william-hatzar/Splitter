@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TipAmounts extends StatefulWidget {
-  final String tipAmountPerPerson;
-  final String totalPerPerson;
+  final double tipAmountPerPerson;
+  final double totalPerPerson;
+
   const TipAmounts({Key? key, required this.tipAmountPerPerson, required this.totalPerPerson}) : super(key: key);
 
   @override
@@ -12,13 +13,29 @@ class TipAmounts extends StatefulWidget {
 class _TipAmountsState extends State<TipAmounts> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text("\$${widget.tipAmountPerPerson}", style: TextStyle(color: Color(0xff25C4AD), fontFamily: "SpaceMono", fontSize: 30), textAlign: TextAlign.end),
-        SizedBox(height: 30),
-        Text("\$${widget.totalPerPerson}", style: TextStyle(color: Color(0xff25C4AD), fontFamily: "SpaceMono", fontSize: 30), textAlign: TextAlign.end),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '\$${widget.tipAmountPerPerson.toStringAsFixed(2)}',
+            style: const TextStyle(
+              fontFamily: "SpaceMono",
+              fontSize: 30,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            '\$${widget.totalPerPerson.toStringAsFixed(2)}',
+            style: const TextStyle(
+              fontFamily: "SpaceMono",
+              fontSize: 30,
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
